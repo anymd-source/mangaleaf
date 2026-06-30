@@ -1,0 +1,1 @@
+<?php home_genres(); ?>
