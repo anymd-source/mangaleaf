@@ -126,7 +126,7 @@ if ( ! is_admin() ) {
  * @param array|false $sources The image sources or false
  * @return false
  */
-function disable_srcset( array | false $sources ): false {
+function disable_srcset( $sources ) {
 	return false;
 }
 add_filter( 'wp_calculate_image_srcset', 'disable_srcset' );
@@ -234,9 +234,9 @@ add_action( 'template_redirect', 'random_template' );
  * Set post view count
  * 
  * @param int $post_id The post ID
- * @return bool|int The meta update result
+ * @return int|bool The meta update result
  */
-function set_post_views( int $post_id ): bool | int {
+function set_post_views( int $post_id ) {
 	$count_key = 'wpb_post_views_count';
 	$count     = (int) get_post_meta( $post_id, $count_key, true );
 
@@ -256,9 +256,9 @@ remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10 );
  * Track post views on singular pages
  * 
  * @param int $post_id The post ID
- * @return bool|int The meta update result or null
+ * @return int|bool|null The meta update result or null
  */
-function track_post_views( int $post_id ): bool | int | null {
+function track_post_views( int $post_id ) {
 	if ( ! is_single() ) {
 		return null;
 	}
